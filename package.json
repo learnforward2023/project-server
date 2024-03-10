@@ -7,7 +7,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "npx tsc",
 		"start": "cross-env NODE_ENV=production node ./dist/index.js",
-		"dev": "cross-env NODE_ENV=development nodemon index.ts",
+		"dev": "cross-env NODE_ENV=development node ./dist/index.js",
+		"local": "cross-env NODE_ENV=local nodemon index.ts",
 		"lint": "eslint ./**/*.{ts,js}",
 		"format": "eslint ./**/*.{ts,js} --fix",
 		"prepare": "husky install"
