@@ -68,8 +68,8 @@ jobs:
           fingerprints:
             - $SSH_KEY
       - run: ssh -o StrictHostKeyChecking=no -v $USER_HOST@$HOST_NAME "./together-k8s-manifests/deploy.sh"
-  
-   check_image_exists_on_docker_hub:
+
+  check_image_exists_on_docker_hub:
     docker:
       - image: cimg/base:stable
     environment:
