@@ -11,7 +11,11 @@
 		"local": "cross-env NODE_ENV=local nodemon index.ts",
 		"lint": "eslint ./**/*.{ts,js}",
 		"format": "eslint ./**/*.{ts,js} --fix",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"migration:production": "NODE_ENV=production npx sequelize-cli db:create && NODE_ENV=production npx sequelize-cli db:migrate",
+		"migration:development": "NODE_ENV=development npx sequelize-cli db:create && NODE_ENV=development npx sequelize-cli db:migrate",
+		"migration:local": "NODE_ENV=local npx sequelize-cli db:create && NODE_ENV=local npx sequelize-cli db:migrate",
+		"db:create": "NODE_ENV=local npx sequelize-cli db:create"
 	},
 	"keywords": [],
 	"author": "",
