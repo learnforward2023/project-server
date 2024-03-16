@@ -1,9 +1,9 @@
 module.exports = {
   development: {
-    username: process.env.DB_USER || 'DB_USER',
-    password: process.env.DB_PASSWORD || 'DB_PASSWORD',
+    username: process.env.DB_USER ?? 'DB_USER',
+    password: process.env.DB_PASSWORD ?? 'DB_PASSWORD',
     database: 'project_development',
-    host: process.env.DB_HOST || 'DB_HOST',
+    host: process.env.DB_HOST ?? 'DB_HOST',
     dialect: 'mysql',
     APPLICATION_PORT: 8080
   },
@@ -16,10 +16,10 @@ module.exports = {
     APPLICATION_PORT: 8080
   },
   production: {
-    username: process.env.DB_USER || 'DB_USER',
-    password: process.env.DB_PASSWORD || 'DB_PASSWORD',
+    username: process.env.DB_USER ?? 'DB_USER',
+    password: process.env.DB_PASSWORD ?? 'DB_PASSWORD',
     database: 'project_production',
-    host: process.env.DB_HOST || 'DB_HOST',
+    host: process.env.DB_HOST ?? 'DB_HOST',
     dialect: 'mysql',
     APPLICATION_PORT: 8080
   }
