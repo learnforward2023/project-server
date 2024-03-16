@@ -23,4 +23,4 @@ module.exports = {
     dialect: 'mysql',
     APPLICATION_PORT: 8080
   }
-};
+}
