@@ -1,11 +1,11 @@
 import express, { type Express, type Request, type Response } from 'express'
-import { connect } from './database/index'
+import db from './models'
 
-import dotenv from 'dotenv'
+const env: string = process.env.NODE_ENV ?? 'local'
+// eslint-disable-next-line
+const config = require('./config/config.js')[env];
 
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` })
-
-const PORT = process.env.APPLICATION_PORT ?? 5000
+const PORT = config.APPLICATION_PORT ?? 5100
 
 const app: Express = express()
 
@@ -13,8 +13,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server')
 })
 
-// eslint-disable-next-line
-connect()
+db.sequelize.sync().then(() => {
+  // eslint-disable-next-line
+  console.log('Database connected!')
+})
 
 app.listen(PORT, () => {
   // eslint-disable-next-line
