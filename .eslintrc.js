@@ -19,7 +19,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest'
   },
-  ignorePatterns: ['dist', 'models/index.ts'],
+  ignorePatterns: ['dist', 'models/index.ts', 'node_modules', 'seeders', 'migrations'],
   rules: {
     indent: ['error', 2],
     'no-duplicate-imports': ['error', { includeExports: true }],
@@ -77,6 +77,9 @@ module.exports = {
       }
     ],
     quotes: ['error', 'single'],
-    'template-curly-spacing': 'error'
+    'template-curly-spacing': 'error',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off'
   }
 }
