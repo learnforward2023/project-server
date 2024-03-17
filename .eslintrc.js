@@ -77,6 +77,8 @@ module.exports = {
       }
     ],
     quotes: ['error', 'single'],
-    'template-curly-spacing': 'error'
+    'template-curly-spacing': 'error',
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-misused-promises": "off",
   }
 }
