@@ -9,7 +9,7 @@
 		"start": "cross-env NODE_ENV=production node ./dist/index.js",
 		"dev": "cross-env NODE_ENV=development node ./dist/index.js",
 		"local": "cross-env NODE_ENV=local nodemon index.ts",
-		"lint": "eslint ./**/*.ts",
+		"lint": "eslint . --fix",
 		"format": "eslint ./**/*.ts --fix",
 		"prepare": "husky install",
 		"migration:production": "NODE_ENV=production npx sequelize-cli db:create && NODE_ENV=production npx sequelize-cli db:migrate",
