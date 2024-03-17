@@ -2,11 +2,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Sequelize, DataTypes } from 'sequelize';
 import process from 'process';
+import config from '../config/config';
 
 const basename: string = path.basename(__filename);
-const env: string = process.env.NODE_ENV ?? 'local';
-const config = require(__dirname + '/../config/config.js');
-const databaseConfig = config[env];
+const env: 'local' | 'production' | 'development' | string = process.env.NODE_ENV ?? 'local';
+const databaseConfig = config[env as 'local' | 'production' | 'development'];
 const db: any = {};
 
 const sequelize: Sequelize = new Sequelize(databaseConfig.database, databaseConfig.username, databaseConfig.password, { ...databaseConfig, dialect: 'mysql' })
@@ -22,7 +22,7 @@ fs
     );
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, DataTypes);
+    const model = require(path.join(__dirname, file));;
     db[model.name] = model;
   });
 
@@ -34,5 +34,7 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+export { sequelize }
 
 export default db;

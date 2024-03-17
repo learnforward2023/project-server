@@ -3,10 +3,7 @@ import db from './models'
 import rootRouter from './routes'
 const router = express.Router()
 
-const env: string = process.env.NODE_ENV ?? 'local'
-// eslint-disable-next-line
-const config = require('./config/config.js')[env];
-const PORT = config.APPLICATION_PORT ?? 5100
+const PORT = 8080
 const app: Express = express()
 
 app.use(express.json())
