@@ -1,8 +1,7 @@
 'use strict'
 import { Model, DataTypes } from 'sequelize'
-import db from './index'
+import { sequelize } from '.'
 import { REGEX_EMAIL, SALT_ROUNDS } from '../utils/constants'
-const { sequelize } = db
 const bcrypt = require('bcrypt')
 
 interface UserAttributes {
