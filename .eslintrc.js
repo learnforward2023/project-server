@@ -19,7 +19,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest'
   },
-  ignorePatterns: ['dist', 'models/index.ts'],
+  ignorePatterns: ['dist', 'models/index.ts', 'node_modules', 'seeders'],
   rules: {
     indent: ['error', 2],
     'no-duplicate-imports': ['error', { includeExports: true }],

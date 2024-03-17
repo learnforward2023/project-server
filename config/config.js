@@ -1,3 +1,5 @@
+require('ts-node/register')
+
 module.exports = {
   development: {
     username: process.env.DB_USER ?? 'DB_USER',
