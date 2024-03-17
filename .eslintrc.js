@@ -80,5 +80,6 @@ module.exports = {
     'template-curly-spacing': 'error',
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
   }
 }
