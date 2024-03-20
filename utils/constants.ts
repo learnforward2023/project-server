@@ -5,6 +5,8 @@ export const SALT_ROUNDS = 12
 
 const GITHUB_CLIENT_ID_LOCAL = 'd3c3bd8c6bcc882f315c'
 const GITHUB_CLIENT_SECRET_LOCAL = 'aac335b918bb8bfa0e86d34c7e94dfadcd32a535'
+const SECRET_JWT_KEY_LOCAL = 'study_together_secret_key'
 
 export const GITHUB_CLIENT_ID = process.env.NODE_ENV === 'local' ? GITHUB_CLIENT_ID_LOCAL : process.env.GITHUB_CLIENT_ID
 export const GITHUB_CLIENT_SECRET = process.env.NODE_ENV === 'local' ? GITHUB_CLIENT_SECRET_LOCAL : process.env.GITHUB_CLIENT_SECRET
+export const SECRET_JWT_KEY = process.env.NODE_ENV === 'local' ? SECRET_JWT_KEY_LOCAL : process.env.SECRET_JWT_KEY
