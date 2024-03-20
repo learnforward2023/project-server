@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   development: {
     username: process.env.DB_USER ?? 'DB_USER',
     password: process.env.DB_PASSWORD ?? 'DB_PASSWORD',
@@ -7,10 +7,10 @@ const config = {
     dialect: 'mysql'
   },
   local: {
-    username: 'root',
-    password: '',
+    username: 'username',
+    password: 'password',
     database: 'project_local',
-    host: '127.0.0.1',
+    host: 'localhost',
     dialect: 'mysql'
   },
   production: {
@@ -21,5 +21,3 @@ const config = {
     dialect: 'mysql'
   }
 }
-
-export default config
