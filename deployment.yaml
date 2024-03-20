@@ -9,7 +9,7 @@ spec:
   capacity:
     storage: 2Gi
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   hostPath:
     path: "/home/wltd/k8s-volumes/mysql"
 ---
@@ -20,7 +20,7 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
@@ -32,9 +32,9 @@ metadata:
 spec:
   type: NodePort # remove if using ClusterIp
   ports:
-    - port: 3306
-      targetPort: 3306
-      nodePort: 32002
+  - port: 3306
+    targetPort: 3306
+    nodePort: 32002
   selector:
     app: mysql
   # clusterIp: none # uncomment if using ClusterIp
@@ -55,29 +55,29 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: mysql:8.0
+      - image: mysql:8.0
+        name: mysql
+        env:
+        # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
           name: mysql
-          env:
-            # Use secret in real usage
-            - name: MYSQL_ROOT_PASSWORD
-              value: password
-          ports:
-            - containerPort: 3306
-              name: mysql
-          volumeMounts:
-            - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
-      initContainers:
-        - name: setup
-          image: mysql:8.0
-          command: ['bash', '-c', 'mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS project_server;"']
-          env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: password
-      volumes:
+        volumeMounts:
         - name: mysql-persistent-storage
-          persistentVolumeClaim:
-            claimName: mysql-pv-claim
+          mountPath: /var/lib/mysql
+      initContainers:
+      - name: setup
+        image: mysql:8.0
+        command: ['bash', '-c', 'mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS project_server;"']
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -94,10 +94,10 @@ spec:
         app: node
     spec:
       containers:
-        - name: node
-          image: learnforward2022/project-server:test
-          ports:
-            - containerPort: 8080
+      - name: node
+        image: learnforward2022/project-server:test
+        ports:
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -108,7 +108,7 @@ spec:
     app: node
   type: NodePort # remove if using ClusterIp
   ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 32100
+  - port: 8080
+    targetPort: 8080
+    nodePort: 32100
   # clusterIp: none # uncomment if using ClusterIp
