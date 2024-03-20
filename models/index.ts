@@ -1,15 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { Sequelize, DataTypes } from 'sequelize';
-import process from 'process';
-import config from '../config/config';
+import { Sequelize } from 'sequelize';
+import { ApplicationConfig } from '../utils/config';
 
 const basename: string = path.basename(__filename);
-const env: 'local' | 'production' | 'development' | string = process.env.NODE_ENV ?? 'local';
-const databaseConfig = config[env as 'local' | 'production' | 'development'];
 const db: any = {};
 
-const sequelize: Sequelize = new Sequelize(databaseConfig.database, databaseConfig.username, databaseConfig.password, { ...databaseConfig, dialect: 'mysql' })
+const sequelize: Sequelize = new Sequelize(ApplicationConfig.database, ApplicationConfig.username, ApplicationConfig.password, { ...ApplicationConfig, dialect: 'mysql' })
 
 fs
   .readdirSync(__dirname)
