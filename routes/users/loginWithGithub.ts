@@ -1,7 +1,10 @@
 import { type Request, type Response } from 'express'
+import jwt from 'jsonwebtoken'
+
 import axios from 'axios'
 import User from '../../models/user'
-import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '../../utils/constants'
+import { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, SECRET_JWT_KEY } from '../../utils/constants'
+import { ApplicationConfig } from '../../utils/config'
 
 export default async (req: Request, res: Response) => {
   try {
@@ -43,11 +46,14 @@ export default async (req: Request, res: Response) => {
         provider: 'github'
       })
     }
-    res.cookie('token', 'token', {
-      maxAge: 9000,
-      httpOnly: true
-    })
-    res.redirect('/')
+
+    const jwtToken = jwt.sign({
+      email: user.email,
+      provider: user.provider,
+      id: user.id
+    }, SECRET_JWT_KEY!, { expiresIn: '30d' })
+
+    res.redirect(`${ApplicationConfig.authRedirectSuccessUrl}?token=${jwtToken}`)
   } catch (error) {
     res.status(500).json({ message: 'Internal server error' })
   }

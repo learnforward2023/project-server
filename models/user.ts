@@ -5,6 +5,7 @@ import { REGEX_EMAIL, SALT_ROUNDS } from '../utils/constants'
 const bcrypt = require('bcrypt')
 
 interface UserAttributes {
+  id?: number
   email: string
   password: string
   phone?: string
@@ -24,6 +25,7 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public avatar!: string
   public providerId!: string | null
   public provider!: string | null
+  public id!: number
 
   /**
    * Helper method for defining associations.
@@ -37,6 +39,11 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
 
 User.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

@@ -78,8 +78,10 @@ module.exports = {
     ],
     quotes: ['error', 'single'],
     'template-curly-spacing': 'error',
+    // this rules will be disabled and will be enabled in the future
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off'
   }
 }
