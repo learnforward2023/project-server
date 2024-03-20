@@ -10,6 +10,8 @@ interface UserAttributes {
   phone?: string
   name?: string
   avatar?: string
+  providerId?: string | null
+  provider?: string | null
 }
 
 interface UserCreationAttributes extends UserAttributes { }
@@ -20,6 +22,8 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public phone!: string
   public name!: string
   public avatar!: string
+  public providerId!: string | null
+  public provider!: string | null
 
   /**
    * Helper method for defining associations.
@@ -70,17 +74,23 @@ User.init(
     },
     phone: DataTypes.STRING,
     name: DataTypes.STRING,
-    avatar: DataTypes.STRING
+    avatar: DataTypes.STRING,
+    providerId: DataTypes.STRING,
+    provider: DataTypes.STRING
   },
   {
     sequelize,
     modelName: 'User',
-    tableName: 'users',
+    tableName: 'Users',
     timestamps: true,
     indexes: [
       {
         unique: true,
         fields: ['email']
+      },
+      {
+        unique: true,
+        fields: ['providerId']
       }
     ],
     hooks: {
