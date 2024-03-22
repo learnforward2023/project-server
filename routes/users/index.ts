@@ -2,9 +2,6 @@ import { type Router } from 'express'
 import registerNewAccount from './registerNewAccount'
 import loginWithGithub from './loginWithGithub'
 import loginWithGoogle from './loginWithGoogle'
-<<<<<<< HEAD
-import { GOOGLE_CLIENT_ID, GOOGLE_REDIRECT_URI } from '../../utils/constants'
-=======
 import loginWithFacebook from './loginWithFacebook'
 import {
   FACEBOOK_CLIENT_ID,
@@ -12,7 +9,6 @@ import {
   GOOGLE_CLIENT_ID,
   GOOGLE_REDIRECT_URI
 } from '../../utils/constants'
->>>>>>> 5980179 (feat: login with facebook)
 
 export default (router: Router) => {
   router.post('/api/v1/users/register', registerNewAccount)
@@ -23,13 +19,10 @@ export default (router: Router) => {
     res.redirect(url)
   })
   router.get('/api/v1/auth/google/callback', loginWithGoogle)
-<<<<<<< HEAD
-=======
   router.get('/auth/facebook', (req, res) => {
     res.redirect(
       `https://www.facebook.com/v12.0/dialog/oauth?client_id=${FACEBOOK_CLIENT_ID}&redirect_uri=${FACEBOOK_REDIRECT_URI}&scope=email`
     )
   })
   router.get('/api/v1/auth/facebook/callback', loginWithFacebook)
->>>>>>> 5980179 (feat: login with facebook)
 }

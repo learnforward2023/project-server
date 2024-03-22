@@ -11,7 +11,7 @@ module.exports = {
     username: 'username',
     password: 'password',
     database: 'project_local',
-    host: 'localhost',
+    host: '127.0.0.1',
     dialect: 'mysql',
     authRedirectSuccessUrl: 'http://localhost:3000/auth/success'
   },
