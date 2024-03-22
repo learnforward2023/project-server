@@ -5,7 +5,7 @@ module.exports = {
     database: 'project_development',
     host: process.env.DB_HOST ?? 'DB_HOST',
     dialect: 'mysql',
-    authRedirectSuccessUrl: 'https://merry.studytogether.vn/auth/success'
+    authRedirectSuccessUrl: 'http://dev.studytogether.vn/auth/success'
   },
   local: {
     username: 'username',
@@ -21,6 +21,6 @@ module.exports = {
     database: 'project_production',
     host: process.env.DB_HOST ?? 'DB_HOST',
     dialect: 'mysql',
-    authRedirectSuccessUrl: 'https://studytogether.vn/auth/success'
+    authRedirectSuccessUrl: 'https://merry.studytogether.vn/auth/success'
   }
 }
