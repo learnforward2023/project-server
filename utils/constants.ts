@@ -18,3 +18,11 @@ const GOOGLE_REDIRECT_URI_LOCAL = 'http://localhost:8080/api/v1/auth/google/call
 export const GOOGLE_REDIRECT_URI = process.env.NODE_ENV === 'local' ? GOOGLE_REDIRECT_URI_LOCAL : process.env.GOOGLE_REDIRECT_URI
 export const GOOGLE_CLIENT_ID = process.env.NODE_ENV === 'local' ? GOOGLE_CLIENT_ID_LOCAL : process.env.GOOGLE_CLIENT_ID
 export const GOOGLE_CLIENT_SECRET = process.env.NODE_ENV === 'local' ? GOOGLE_CLIENT_SECRET_LOCAL : process.env.GOOGLE_CLIENT_SECRET
+
+const FACEBOOK_CLIENT_ID_LOCAL = '415085131470048'
+const FACEBOOK_CLIENT_SECRET_LOCAL = '43c30b3430b6bfbd1b82baca0b32d0db'
+const FACEBOOK_REDIRECT_URI_LOCAL = 'http://localhost:8080/api/v1/auth/facebook/callback'
+
+export const FACEBOOK_CLIENT_ID = process.env.NODE_ENV === 'local' ? FACEBOOK_CLIENT_ID_LOCAL : process.env.FACEBOOK_CLIENT_ID
+export const FACEBOOK_CLIENT_SECRET = process.env.NODE_ENV === 'local' ? FACEBOOK_CLIENT_SECRET_LOCAL : process.env.FACEBOOK_CLIENT_SECRET
+export const FACEBOOK_REDIRECT_URI = process.env.NODE_ENV === 'local' ? FACEBOOK_REDIRECT_URI_LOCAL : process.env.REDIRECT_URI
