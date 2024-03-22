@@ -11,8 +11,8 @@ export const GITHUB_CLIENT_ID = process.env.NODE_ENV === 'local' ? GITHUB_CLIENT
 export const GITHUB_CLIENT_SECRET = process.env.NODE_ENV === 'local' ? GITHUB_CLIENT_SECRET_LOCAL : process.env.GITHUB_CLIENT_SECRET
 export const SECRET_JWT_KEY = process.env.NODE_ENV === 'local' ? SECRET_JWT_KEY_LOCAL : process.env.SECRET_JWT_KEY
 
-const GOOGLE_CLIENT_ID_LOCAL = '210177323003'
-const GOOGLE_CLIENT_SECRET_LOCAL = 'GOCSPX-jp5kM'
+const GOOGLE_CLIENT_ID_LOCAL = '210177323003-678d3l33qsv9erdv5d3sdikqbtmrhv8b.apps.googleusercontent.com'
+const GOOGLE_CLIENT_SECRET_LOCAL = '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'
 const GOOGLE_REDIRECT_URI_LOCAL = 'http://localhost:8080/api/v1/auth/google/callback'
 
 export const GOOGLE_REDIRECT_URI = process.env.NODE_ENV === 'local' ? GOOGLE_REDIRECT_URI_LOCAL : process.env.GOOGLE_REDIRECT_URI
