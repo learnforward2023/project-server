@@ -29,9 +29,7 @@ export default async (req: Request, res: Response) => {
     )
 
     const accessToken = data.access_token
-    const facebookUserResponse = await axios.get(
-      `https://graph.facebook.com/v12.0/me?fields=id,name,email&access_token=${accessToken}`
-    )
+    const facebookUserResponse = await axios.get(`https://graph.facebook.com/v12.0/me?fields=id,name,email&access_token=${accessToken}`)
 
     const facebookUserData = facebookUserResponse.data
 
@@ -40,10 +38,11 @@ export default async (req: Request, res: Response) => {
     })
 
     if (user == null) {
+      const email = `facebook.${facebookUserData.id}@study.together`
       const randomPassword = Math.random().toString(36).slice(-8)
 
       user = await User.create({
-        email: facebookUserData.email,
+        email,
         name: facebookUserData.name,
         password: randomPassword,
         providerId: facebookUserData.id,
@@ -60,10 +59,8 @@ export default async (req: Request, res: Response) => {
       { expiresIn: '30d' }
     )
 
-    res.redirect(
-      `${ApplicationConfig.authRedirectSuccessUrl}?token=${jwtToken}`
-    )
+    res.redirect(`${ApplicationConfig.authRedirectSuccessUrl}?token=${jwtToken}`)
   } catch (error) {
-    res.status(500).send('An error occurred')
+    res.status(500).send('Không ổn rồi đại vương ơi!')
   }
 }

@@ -25,4 +25,4 @@ const FACEBOOK_REDIRECT_URI_LOCAL = 'http://localhost:8080/api/v1/auth/facebook/
 
 export const FACEBOOK_CLIENT_ID = process.env.NODE_ENV === 'local' ? FACEBOOK_CLIENT_ID_LOCAL : process.env.FACEBOOK_CLIENT_ID
 export const FACEBOOK_CLIENT_SECRET = process.env.NODE_ENV === 'local' ? FACEBOOK_CLIENT_SECRET_LOCAL : process.env.FACEBOOK_CLIENT_SECRET
-export const FACEBOOK_REDIRECT_URI = process.env.NODE_ENV === 'local' ? FACEBOOK_REDIRECT_URI_LOCAL : process.env.REDIRECT_URI
+export const FACEBOOK_REDIRECT_URI = process.env.NODE_ENV === 'local' ? FACEBOOK_REDIRECT_URI_LOCAL : process.env.FACEBOOK_REDIRECT_URI

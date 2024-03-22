@@ -28,19 +28,18 @@ export default async (req: Request, res: Response) => {
     })
 
     const accessToken = data.access_token
-    const googleUserResponse = await axios.get(
-      `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${accessToken}`
-    )
+    const googleUserResponse = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${accessToken}`)
 
     const googleUserData = googleUserResponse.data
 
     let user = await User.findOne({ where: { providerId: googleUserData.id } })
 
     if (user == null) {
+      const email = `google.${googleUserData.id}@study.together`
       const randomPassword = Math.random().toString(36).slice(-8)
 
       user = await User.create({
-        email: googleUserData.email,
+        email,
         name: googleUserData.name,
         password: randomPassword,
         providerId: googleUserData.id,
@@ -57,10 +56,8 @@ export default async (req: Request, res: Response) => {
       { expiresIn: '30d' }
     )
 
-    res.redirect(
-      `${ApplicationConfig.authRedirectSuccessUrl}?token=${jwtToken}`
-    )
+    res.redirect(`${ApplicationConfig.authRedirectSuccessUrl}?token=${jwtToken}`)
   } catch (error) {
-    res.status(500).send('An error occurred')
+    res.status(500).send('Không ổn rồi đại vương ơi!')
   }
 }
