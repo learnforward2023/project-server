@@ -28,7 +28,7 @@ export default async (req: Request, res: Response) => {
       id: user.id
     }, SECRET_JWT_KEY!, { expiresIn: '30d' })
 
-    res.status(200).json({ token: jwtToken })
+    res.status(200).json({ message: 'Đăng nhập thành công!', token: jwtToken })
   } catch (error) {
     res.status(500).json({ message: 'Không ổn rồi đại vương ơi!' })
   }
