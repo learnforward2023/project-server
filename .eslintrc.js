@@ -78,7 +78,7 @@ module.exports = {
     ],
     quotes: ['error', 'single'],
     'template-curly-spacing': 'error',
-    '@typescript-eslint/strict-boolean-expressions': "off",
+    '@typescript-eslint/strict-boolean-expressions': 'off',
     // this rules will be disabled and will be enabled in the future
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
